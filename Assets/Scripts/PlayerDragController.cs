@@ -28,7 +28,6 @@ public class PlayerDragController : MonoBehaviour
         }
 
         if (Input.touchCount > 0) {
-            Debug.Log ("touch");
             // Screen touch
             Vector2 position = Input.GetTouch (1).position;
             x = position.x;
@@ -36,7 +35,6 @@ public class PlayerDragController : MonoBehaviour
             isMoving = true;
         } else if (Input.GetMouseButton (0)) {
             // Left click
-            Debug.Log ("Click");
             Vector3 position = Input.mousePosition;
             x = position.x;
             y = position.y;
