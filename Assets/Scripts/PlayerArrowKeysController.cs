@@ -10,12 +10,10 @@ public class PlayerArrowKeysController : MonoBehaviour
     public float minSpeedToStop = 0.1f;
 
     private Rigidbody2D playerRigidBody;
-    private int count;
 
     void Start ()
     {
         playerRigidBody = GetComponent<Rigidbody2D> ();
-        count = 0;
     }
 
     void FixedUpdate ()
@@ -23,7 +21,9 @@ public class PlayerArrowKeysController : MonoBehaviour
         float moveHorizontal = Input.GetAxis ("Horizontal");
         float moveVertical = Input.GetAxis ("Vertical");
 
-        Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
+        Debug.Log ("h:" + moveHorizontal + "\tv:" + moveVertical);
+
+        Vector2 movement = new Vector2 (moveHorizontal, moveVertical).normalized;
         Vector2 velocity = playerRigidBody.velocity;
         Vector2 pos = transform.position;
 
@@ -35,14 +35,6 @@ public class PlayerArrowKeysController : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
         } else {
             playerRigidBody.velocity = Vector2.zero;
-        }
-    }
-
-    void OnTriggerEnter (Collider other)
-    {
-        if (other.gameObject.CompareTag ("NotePickup")) {
-            other.gameObject.SetActive (false);
-            count++;
         }
     }
 }
