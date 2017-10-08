@@ -21,8 +21,6 @@ public class PlayerArrowKeysController : MonoBehaviour
         float moveHorizontal = Input.GetAxis ("Horizontal");
         float moveVertical = Input.GetAxis ("Vertical");
 
-        Debug.Log ("h:" + moveHorizontal + "\tv:" + moveVertical);
-
         Vector2 movement = new Vector2 (moveHorizontal, moveVertical).normalized;
         Vector2 velocity = playerRigidBody.velocity;
         Vector2 pos = transform.position;
