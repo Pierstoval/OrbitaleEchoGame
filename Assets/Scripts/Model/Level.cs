@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Model
 {
+    [System.Serializable]
     public class Level
     {
         public string name;
