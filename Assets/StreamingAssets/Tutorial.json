@@ -1,0 +1,16 @@
+{
+    "name": "Tutorial",
+    "notes": [
+        {
+            "note": "C#1",
+            "delay": 100,
+            "position": {"x": 240, "y": 125},
+            "sequenceNumber": 0
+        },
+        {
+            "note": "C#1",
+            "position": {"x": 240, "y": 125},
+            "sequenceNumber": 0
+        }
+    ]
+}

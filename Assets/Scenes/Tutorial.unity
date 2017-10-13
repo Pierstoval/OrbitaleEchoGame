@@ -3752,7 +3752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060f23a03b9ba9e469a7a6580243f147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  note: {fileID: 1707743964798478, guid: b061db2e4a9fd694c9d8c531cf8eace5, type: 2}
+  noteObjectToCreate: {fileID: 1707743964798478, guid: b061db2e4a9fd694c9d8c531cf8eace5,
+    type: 2}
   levelName: Tutorial
 --- !u!4 &382772550
 Transform:
