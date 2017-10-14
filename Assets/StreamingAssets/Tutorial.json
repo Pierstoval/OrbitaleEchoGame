@@ -2,18 +2,22 @@
     "name": "Tutorial",
     "notes": [
         {
-            "note": "C#1",
-            "delay": 100.0,
-            "x": 10.0,
-            "y": 10.0,
+            "note": "C",
+            "octave": 0,
+            "alter": "",
+            "duration": 1.0,
+            "angle": 90.0,
+            "x": 0.0,
+            "y": 1.0,
             "sequenceNumber": 0
         },
         {
-            "note": "C#1",
-            "delay": 100.0,
-            "x": 20.0,
-            "y": 20.0,
-            "sequenceNumber": 0
+            "note": "C",
+            "octave": 1,
+            "alter": "#",
+            "duration": 1,
+            "angle": 45.0,
+            "sequenceNumber": 1
         }
     ]
 }

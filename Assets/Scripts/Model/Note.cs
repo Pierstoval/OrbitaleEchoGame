@@ -8,9 +8,20 @@ namespace Model
     public class Note
     {
         public string note;
-        public float delay;
-        public float x;
-        public float y;
+
+        // Can be "", "#" or "b"
+        public string alter;
+
+        public int octave;
+
+        public float duration;
+
         public int sequenceNumber;
+
+        public float angle;
+
+        public float x;
+
+        public float y;
     }
 }

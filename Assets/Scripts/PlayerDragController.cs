@@ -17,6 +17,8 @@ public class PlayerDragController : MonoBehaviour
 
     void FixedUpdate ()
     {
+        Debug.DrawRay (transform.position, transform.rotation * Vector3.right, Color.red);
+
         float x = 0;
         float y = 0;
         bool isMoving = false;
