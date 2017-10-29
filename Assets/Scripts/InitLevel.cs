@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using Level = Model.Level;
 using Note = Model.Note;
+using NotesSequence = Model.NotesSequence;
 
 public class InitLevel : MonoBehaviour
 {
@@ -13,10 +14,14 @@ public class InitLevel : MonoBehaviour
 
     private Note previousNote;
 
+    private NotesSequence sequence;
+
     // Use this for initialization
     void Start ()
     {
         string filePath = "Levels/" + levelName;
+
+        sequence = new NotesSequence ();
 
         // Read the json from the file into a string
         TextAsset dataAsJson = Resources.Load<TextAsset> (filePath);
@@ -27,14 +32,14 @@ public class InitLevel : MonoBehaviour
 
             foreach (Note note in level.notes) {
                 if (null != previousNote) {
-                    note.x = previousNote.x;
-                    note.y = previousNote.y * 2;
+                    var x = previousNote.duration * Mathf.Cos (previousNote.angle * Mathf.Deg2Rad);
+                    var y = previousNote.duration * Mathf.Sin (previousNote.angle * Mathf.Deg2Rad);
+                    note.x = previousNote.x + x;
+                    note.y = previousNote.y + y;
                 }
                 CreateObject (note);
                 previousNote = note;
             }
-
-            // Todo: create the game objects \o/
 
             previousNote = null;
         } else {
@@ -51,10 +56,13 @@ public class InitLevel : MonoBehaviour
                 Quaternion.Euler (0f, 0f, note.angle)
             );
 
+        sequence.AddNoteObject (noteGameObject, note);
+
         LightNoteInteraction sc = noteGameObject.GetComponent<LightNoteInteraction> ();
         sc.sequenceNumber = note.sequenceNumber;
         sc.duration = note.duration;
         sc.SetActiveSpriteFromNote (note);
         sc.StartInteraction ();
+        sc.SetSequence (sequence);
     }
 }

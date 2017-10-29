@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Note = Model.Note;
+using NotesSequence = Model.NotesSequence;
+using NotesSpritesReferences = Model.NotesSpritesReferences;
 
 public class LightNoteInteraction : MonoBehaviour
 {
@@ -28,36 +30,16 @@ public class LightNoteInteraction : MonoBehaviour
 
     private bool _active = true;
 
+    private NotesSequence _sequence { get; set; }
+
+    public void SetSequence (NotesSequence sequence)
+    {
+        _sequence = sequence;
+    }
+
     public void SetActiveSpriteFromNote (Note note)
     {
-        Dictionary<string, int> noteToSprite = new Dictionary<string, int> ();
-        noteToSprite.Add ("A", 0); // 01-purpleish-blue
-        noteToSprite.Add ("A#", 1); // 02-purple
-        noteToSprite.Add ("Bb", 1); // 02-purple
-        noteToSprite.Add ("B", 2); // 03-pink
-        noteToSprite.Add ("C", 3); // 04-red
-        noteToSprite.Add ("C#", 4); // 05-orange
-        noteToSprite.Add ("Db", 4); // 05-orange
-        noteToSprite.Add ("D", 5); // 06-lightorange
-        noteToSprite.Add ("D#", 6); // 07-yellow
-        noteToSprite.Add ("Eb", 6); // 07-yellow
-        noteToSprite.Add ("E", 7); // 08-greenish-yellow
-        noteToSprite.Add ("F", 8); // 09-green
-        noteToSprite.Add ("F#", 9); // 10-teal
-        noteToSprite.Add ("Gb", 9); // 10-teal
-        noteToSprite.Add ("G", 10); // 11-lightblue
-        noteToSprite.Add ("G#", 11); // 12-blue
-        noteToSprite.Add ("Ab", 11); // 12-blue
-
-        // Parse as "C#" instead of "C" and "#" in separate properties.
-        string finalNote = note.note + note.alter;
-
-        // Retrieve sprite children name from dictionary.
-        int spriteNumber = noteToSprite [finalNote];
-
-        Sprite[] sprites = Resources.LoadAll<Sprite> ("Sprites/PicksColored");
-
-        spriteWhenActive = sprites [spriteNumber];
+        spriteWhenActive = NotesSpritesReferences.GetSpriteFromNote (note);
     }
 
     // Use this for initialization
@@ -86,6 +68,8 @@ public class LightNoteInteraction : MonoBehaviour
     void OnTriggerEnter2D (Collider2D other)
     {
         if (other.gameObject.CompareTag ("Player")) {
+            Debug.Log ("Collision, here's the sequence:");
+            Debug.Log (_sequence);
             // Player entered in the note.
             _active = true;
             _timeLeft = _baseTimeLeft;
