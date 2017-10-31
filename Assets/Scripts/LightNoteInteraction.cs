@@ -68,8 +68,6 @@ public class LightNoteInteraction : MonoBehaviour
     void OnTriggerEnter2D (Collider2D other)
     {
         if (other.gameObject.CompareTag ("Player")) {
-            Debug.Log ("Collision, here's the sequence:");
-            Debug.Log (_sequence);
             // Player entered in the note.
             _active = true;
             _timeLeft = _baseTimeLeft;
