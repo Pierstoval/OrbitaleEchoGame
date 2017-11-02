@@ -5,7 +5,7 @@
             "note": "A",
             "octave": 1,
             "alter": "",
-            "duration": 1.5,
+            "duration": 1,
             "angle": 10.0,
             "x": 0.0,
             "y": 1.0,
@@ -15,7 +15,7 @@
             "note": "A",
             "octave": 1,
             "alter": "#",
-            "duration": 1.5,
+            "duration": 0.5,
             "angle": 20.0,
             "sequenceNumber": 1
         },
@@ -31,7 +31,7 @@
             "note": "B",
             "octave": 1,
             "alter": "",
-            "duration": 1.5,
+            "duration": 0.5,
             "angle": 40.0,
             "sequenceNumber": 1
         },
@@ -39,7 +39,7 @@
             "note": "C",
             "octave": 1,
             "alter": "",
-            "duration": 1.5,
+            "duration": 0.5,
             "angle": -40.0,
             "sequenceNumber": 1
         },
@@ -55,7 +55,7 @@
             "note": "D",
             "octave": 1,
             "alter": "b",
-            "duration": 1.5,
+            "duration": 0.5,
             "angle": -60.0,
             "sequenceNumber": 1
         },

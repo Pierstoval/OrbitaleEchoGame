@@ -141,9 +141,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.002, y: -0.003}
+  m_Offset: {x: 0.02, y: -0.003}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.25
 --- !u!96 &96762408741648778
 TrailRenderer:
   serializedVersion: 2
@@ -277,6 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationObject: {fileID: 1206572610578090}
+  keyCode: 32
 --- !u!114 &114954435284045410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,7 +349,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 781158605
+  randomSeed: 499633469
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3665,7 +3666,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 163315873
+  randomSeed: 1245336348
   InitialModule:
     serializedVersion: 3
     enabled: 1

@@ -17,7 +17,7 @@ public class InitLevel : MonoBehaviour
     private NotesSequence sequence;
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
         string filePath = "Levels/" + levelName;
 

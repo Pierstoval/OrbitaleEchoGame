@@ -22,19 +22,19 @@ public class LightNoteInteraction : MonoBehaviour
     // The inactive one should correspond to the one present in the sprite renderer when the object is constructed.
     public Sprite spriteWhenActive;
 
-    private SpriteRenderer _spriteRenderer;
-    private Sprite _spriteWhenInactive;
+    private SpriteRenderer spriteRenderer;
+    private Sprite spriteWhenInactive;
 
-    private float _baseTimeLeft;
-    private float _timeLeft;
+    private float baseTimeLeft;
+    private float timeLeft;
 
-    private bool _active = true;
+    private bool active = true;
 
-    private NotesSequence _sequence { get; set; }
+    private NotesSequence sequence { get; set; }
 
-    public void SetSequence (NotesSequence sequence)
+    public void SetSequence (NotesSequence notesSequence)
     {
-        _sequence = sequence;
+        sequence = notesSequence;
     }
 
     public void SetActiveSpriteFromNote (Note note)
@@ -46,10 +46,22 @@ public class LightNoteInteraction : MonoBehaviour
     // Made public so it's accessible programmatically without using Start();
     public void StartInteraction ()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer> ();
-        _spriteWhenInactive = _spriteRenderer.sprite;
+        spriteRenderer = GetComponent<SpriteRenderer> ();
+        spriteWhenInactive = spriteRenderer.sprite;
 
-        _baseTimeLeft = duration + (duration / delayTolerance);
+        baseTimeLeft = duration + (duration / delayTolerance);
+    }
+
+    public void Activate ()
+    {
+        if (true == active) {
+            return;
+        }
+
+        // Player entered in the note.
+        active = true;
+        timeLeft = baseTimeLeft;
+        spriteRenderer.sprite = spriteWhenActive;
     }
 
     // Update is called once per frame
@@ -57,21 +69,11 @@ public class LightNoteInteraction : MonoBehaviour
     {
         Debug.DrawRay (transform.position, transform.rotation * Vector3.right, Color.red);
 
-        if (_active) {
-            _timeLeft -= Time.deltaTime;
-            if (_timeLeft < 0) {
-                _spriteRenderer.sprite = _spriteWhenInactive;
+        if (active) {
+            timeLeft -= Time.deltaTime;
+            if (timeLeft < 0) {
+                spriteRenderer.sprite = spriteWhenInactive;
             }
-        }
-    }
-
-    void OnTriggerEnter2D (Collider2D other)
-    {
-        if (other.gameObject.CompareTag ("Player")) {
-            // Player entered in the note.
-            _active = true;
-            _timeLeft = _baseTimeLeft;
-            _spriteRenderer.sprite = spriteWhenActive;
         }
     }
 }
