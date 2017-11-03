@@ -73,6 +73,8 @@ public class LightNoteInteraction : MonoBehaviour
             timeLeft -= Time.deltaTime;
             if (timeLeft < 0) {
                 spriteRenderer.sprite = spriteWhenInactive;
+                active = false;
+                timeLeft = 0;
             }
         }
     }

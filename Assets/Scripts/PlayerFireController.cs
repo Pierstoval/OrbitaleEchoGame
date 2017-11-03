@@ -15,11 +15,14 @@ public class PlayerFireController : MonoBehaviour
     {
         animationScript = animationObject.GetComponent<GrowingCircleAnimation> ();
         circleCollider = GetComponent<Collider2D> ();
-        notes = GameObject.FindGameObjectsWithTag ("NotePickup");
     }
 
     void Update ()
     {
+        if (null == notes) {
+            InitNotes ();
+        }
+
         if (Input.GetKeyDown (keyCode)) {
             animationScript.Trigger ();
             CheckOverlappingNotes ();
@@ -33,5 +36,10 @@ public class PlayerFireController : MonoBehaviour
                 note.GetComponent<LightNoteInteraction> ().Activate ();
             }
         }
+    }
+
+    private void InitNotes ()
+    {
+        notes = GameObject.FindGameObjectsWithTag ("NotePickup");
     }
 }
